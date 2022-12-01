@@ -1,5 +1,6 @@
 package com.security.security.model;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -32,6 +33,12 @@ public class User {
         this.password = password;
         this.enabled = enabled;
         this.authority = authority;
+    }
+
+    public User(String username2, String password2, List authority) {
+        this.username = username2;
+        this.password = password2;
+        this.authority = (Set)authority;
     }
 
     public Long getId() {
