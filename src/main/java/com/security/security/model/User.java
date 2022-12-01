@@ -1,7 +1,6 @@
 package com.security.security.model;
 
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -22,12 +21,12 @@ public class User {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "authority_user", joinColumns = @JoinColumn(name = "usuario_id"), inverseJoinColumns = @JoinColumn(name = "authority_id"))
-    private Set<Authority> authority;
+    private List<Authority> authority;
 
     public User() {
     }
 
-    public User(Long id, String username, String password, Boolean enabled, Set<Authority> authority) {
+    public User(Long id, String username, String password, Boolean enabled, List<Authority> authority) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -38,14 +37,15 @@ public class User {
     public User(String username2, String password2, List authority) {
         this.username = username2;
         this.password = password2;
-        this.authority = (Set)authority;
+        this.enabled = true;
+        this.authority = authority;
     }
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void ListId(Long id) {
         this.id = id;
     }
 
@@ -53,7 +53,7 @@ public class User {
         return username;
     }
 
-    public void setUsername(String username) {
+    public void ListUsername(String username) {
         this.username = username;
     }
 
@@ -61,7 +61,7 @@ public class User {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void ListPassword(String password) {
         this.password = password;
     }
 
@@ -69,15 +69,15 @@ public class User {
         return enabled;
     }
 
-    public void setEnabled(Boolean enabled) {
+    public void ListEnabled(Boolean enabled) {
         this.enabled = enabled;
     }
 
-    public Set<Authority> getAuthority() {
+    public List<Authority> getAuthority() {
         return authority;
     }
 
-    public void setAuthority(Set<Authority> authority) {
+    public void ListAuthority(List<Authority> authority) {
         this.authority = authority;
     }
 
